@@ -63,41 +63,78 @@
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                             <div class="flex items-center">
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Samochody</a></div>
                             </div>
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    <p>
-                                        Imię i nazwisko: {{ $name}} {{$surname}}
-                                    </p>
-                                    @if ($city == "Poznań")
-                                        <p>Mieszkasz w województwie wielkopolskim</p>
-                                    @elseif($city == "Wrocław")
-                                        <p>Mieszkasz w województwie dolnośląskim</p>
-                                    @else
-                                        <p>Mieszkasz w innych miastach niż Poznań i Wrocław</p>
-                                    @endif
+                                    <style>
+                                        table, tr, th, td {
+                                            border: solid 1px grey;
+                                            border-collapse: collapse;
+                                            padding: 10px;
+                                            text-align: center;
+                                        }
 
-                                    @unless ($city == "Wrocław")
-                                        <p>
-                                            Twoje lokalizacja jest inna niż Wrocław
-                                        </p>
-                                    @endunless
-
-                                    @php
-                                        $lenCity = mb_strlen($city);
-
-                                        echo "Miasto $city ma $lenCity liter";
-                                    @endphp
-                                </div>
+                                        th {
+                                            color: azure;
+                                            background-color: darkgray;
+                                        }
+                                    </style>
+                                    <table border="1">
+                                        <tr>
+                                            <th>Marka</th>
+                                            <th>Model</th>
+                                            <th>Kolor</th>
+                                        </tr>
+                                            {{-- @php
+                                                foreach ($car as $key => $value) {
+                                                    echo "<tr>";
+                                                    foreach ($value as $value2) {
+                                                        echo "<td>" . $value2 . "</td>";
+                                                    }
+                                                    echo "</tr>";
+                                                }
+                                                    
+                                            @endphp --}}
+                                            @for ($i = 0; $i < count($car); $i++)
+                                                <tr>
+                                                    <td>
+                                                        {{ $car[$i]['brand'] }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $car[$i]['model'] }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $car[$i]['color'] }}
+                                                    </td>
+                                                </tr>
+                                            @endfor
+                                    </table>
+                                    <br>
+                                    @foreach ($car as $item)
+                                        <div>
+                                            @if ($loop->first)
+                                                <span>Pierwszy element tablicy:</span>
+                                            @endif
+                                            @if ($loop->last)
+                                                <span>Ostatni    element tablicy:</span>
+                                            @endif
+                                            
+                                            {{ $loop->index }}:
+                                            Marka: {{ $item['brand'] }},
+                                            Model: {{ $item['model'] }},
+                                            Kolor: {{ $item['color'] }}
+                                        </div>
+                                    @endforeach
+                                </div>    
                             </div>
                         </div>
 
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700">
                             <div class="flex items-center">
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Samochody</a></div>
                             </div>
 
                             <div class="ml-12">

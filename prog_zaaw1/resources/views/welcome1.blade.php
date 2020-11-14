@@ -68,28 +68,7 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    <p>
-                                        Imię i nazwisko: {{ $name}} {{$surname}}
-                                    </p>
-                                    @if ($city == "Poznań")
-                                        <p>Mieszkasz w województwie wielkopolskim</p>
-                                    @elseif($city == "Wrocław")
-                                        <p>Mieszkasz w województwie dolnośląskim</p>
-                                    @else
-                                        <p>Mieszkasz w innych miastach niż Poznań i Wrocław</p>
-                                    @endif
-
-                                    @unless ($city == "Wrocław")
-                                        <p>
-                                            Twoje lokalizacja jest inna niż Wrocław
-                                        </p>
-                                    @endunless
-
-                                    @php
-                                        $lenCity = mb_strlen($city);
-
-                                        echo "Miasto $city ma $lenCity liter";
-                                    @endphp
+                                    Wiek: {{ $age }}
                                 </div>
                             </div>
                         </div>
