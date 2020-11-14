@@ -139,3 +139,15 @@ Route::get('/home/{age?}', [HomeController::class, 'index']);
 use App\Http\Controllers\PageController;
 Route::get('/drives/{drive}', [PageController::class, 'show']);
 Route::get('/drives', [PageController::class, 'index']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('logout', function ()
+{
+    auth()->logout();
+    Session()->flush();
+
+    return Redirect::to('/login');
+})->name('logout');
